@@ -7,6 +7,8 @@ package com.base.DAO;
 
 import com.base.models.Teachers;
 import com.base.util.HibernateUtil;
+import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -33,9 +35,20 @@ public class TeacherDAO {
         session.save(teach); //Korvaa SQL -kielisen komennon: INSERT into teacher (na,e,email...) values ("joku","thth"...)
         
         //End transaction
-        transaction.commit();
+        transaction.commit();  //Transactio tarkistaa, että tietokantaan tallennus onnistui. Jos ei, niin heittää poikkeuksen.
         //Release session. Kannattaa määrittää aina. Sulkeutuu myös automaattisesti joskus myöhemmin, jos ei määritetty. 
         session.close();
     }
     
+    public static List<Teachers> getTeachers() throws Exception{
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        //use HQL query language here, NOT SQL
+        Query query = session.createQuery("from Teachers");    
+        //Make the query  to database
+        List<Teachers> lst = query.list();
+        session.close();
+        //Return list of teachers
+        return lst;
+    }
 }
