@@ -1,9 +1,15 @@
 com\base\DAO\TeacherDAO.class
 com\base\config\WebInitializer.class
+com\base\DAO\UserDAO.class
 com\base\models\Teachers.class
 com\base\models\RelTable.class
 com\base\models\Course.class
 com\base\config\Config.class
 com\base\util\HibernateUtil.class
 com\base\controller\DefaultController.class
+com\base\models\UserRoles.class
+com\base\service\MyUserDetailsService.class
+com\base\config\SecurityWebApplicationInitializer.class
+com\base\config\SecurityConfig.class
 com\base\models\Students.class
+com\base\models\User.class

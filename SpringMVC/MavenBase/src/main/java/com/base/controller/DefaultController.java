@@ -34,7 +34,7 @@ public class DefaultController {
     }
     
     @RequestMapping(value="/teacher", method=RequestMethod.POST)
-    public String addNewTeacher(@ModelAttribute("teacher") Teachers teach, ModelMap map){
+    public String addNewTeacher(@ModelAttribute("teacher") Teachers teach, ModelMap map){    //mappaa teacher modelattributen teach objektille
         System.out.println(teach.getTName());
         
         try{

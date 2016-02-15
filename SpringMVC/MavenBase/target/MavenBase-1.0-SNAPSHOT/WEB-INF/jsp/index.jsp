@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +16,10 @@
         <title>Start Page</title>
     </head>
     <body>
-        <h1 class="my_color">Hello World! ${name}</h1>
-        <a href="/second">To second page</a>
+        <form:form action="/login" method="POST">
+            <input type="text" id="username" name="username"/><br/>
+            <input type="password" id="password" name="password"/><br/>
+            <input type="submit" value="Login"/>
+        </form:form>
     </body>
 </html>

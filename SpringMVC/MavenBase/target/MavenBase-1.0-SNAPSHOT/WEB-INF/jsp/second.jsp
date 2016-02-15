@@ -18,13 +18,13 @@
             <h1>Add new teacher Information</h1>
             <form:form action="/teacher" method="POST" modelAttribute="teacher">     <!--modelAttributen voi nimetä miten haluaa. Täytyy olla sama kuin controllerin @modelAttribute-->
                 <form:label path="">Name</form:label><br/>            
-                <form:input path="TName"></form:input>
-                <form:label path="">email</form:label><br/>            
-                <form:input path="email"></form:input>
+                <form:input path="TName"></form:input><br/> 
+                <form:label path="">Email</form:label><br/>            
+                <form:input path="email"></form:input><br/> 
                 <form:label path="">Phone</form:label><br/>            
-                <form:input path="phone"></form:input>
+                <form:input path="phone"></form:input><br/> 
                 <form:label path="">Subject</form:label><br/>            
-                <form:input path="TSubject"></form:input>
+                <form:input path="TSubject"></form:input><br/>  
                 <input type="submit" value="Save Teacher">
             </form:form>
             <p>${save_info}</p>
