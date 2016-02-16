@@ -40,11 +40,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
             //http.headers().defaultsDisabled();
             System.out.println("CONFIGURE HTTPSECURITY");
             http.authorizeRequests().antMatchers("/").permitAll()
-            .antMatchers("/second").access("hasRole('ROLE_ADMIN')")
-            .antMatchers("/teacher").access("hasRole('ADMIN') and hasRole('DBA')")
+            .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
+                    //vanha rivi: .antMatchers("/second").access("hasRole('ROLE_ADMIN') and hasRole('ROLE_TEACHER')")
+            .antMatchers("/teacher/**").access("hasRole('ROLE_TEACHER') or hasRole('ROLE_ADMIN')")
+            .antMatchers("/student/**").access("hasRole('ROLE_STUDENT') or hasRole('ROLE_ADMIN')")
             .and().formLogin()
-            .defaultSuccessUrl("/second")
-            .loginPage("/login").failureUrl("/login?error")
+            .defaultSuccessUrl("/admin/second")
+            .loginPage("/login").failureUrl("/login/error")
             .usernameParameter("username")
             .passwordParameter("password").and()
             .logout().logoutSuccessUrl("/login?logout")
