@@ -8,6 +8,7 @@ package com.base.DAO;
 import com.base.models.Students;
 import com.base.util.HibernateUtil;
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -39,9 +40,11 @@ public class StudentDAO {
         
         Session session = HibernateUtil.getSessionFactory().openSession();
         //use HQL query language here, NOT SQL
-        Query query = session.createQuery("from Students");    
+        Criteria criteria = session.createCriteria(Students.class);
+        //Query query = session.createQuery("from Students");    
         //Make the query  to database
-        List<Students> lst = query.list();
+        //List<Students> lst = query.list();
+        List<Students> lst = criteria.list();
         session.close();
         //Return list of teachers
         return lst;

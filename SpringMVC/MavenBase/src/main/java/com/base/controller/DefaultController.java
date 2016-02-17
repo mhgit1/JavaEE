@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class DefaultController {
     
+    private boolean isLogged = false;
+    
     @RequestMapping(value="/", method=RequestMethod.GET)
     public String index(ModelMap map){
         //Define attributes you want to use in your template index.jsp. 
@@ -30,6 +32,8 @@ public class DefaultController {
     public String second(ModelMap map){
   
         //Render second.jsp
+        //isLogged = true;
+        map.addAttribute("studentPage", false);
         map.addAttribute("isLogged", true);
         map.addAttribute("teacher", new Teachers());
         try{
@@ -43,7 +47,7 @@ public class DefaultController {
     @RequestMapping(value="/admin/teacher", method=RequestMethod.POST)
     public String addNewTeacher(@ModelAttribute("teacher") Teachers teach, ModelMap map){    //mappaa teacher modelattributen teach objektille
         System.out.println(teach.getTName());
-        map.addAttribute("isLogged", true);
+        //map.addAttribute("isLogged", true);
         try{
             TeacherDAO.addTeacher(teach);
             map.addAttribute("save_info", "Teacher added succesfully!");
@@ -62,6 +66,7 @@ public class DefaultController {
   
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(auth != null){
+            isLogged = false;
             new SecurityContextLogoutHandler().logout(request, resp, auth);
         }
         return "redirect:/";
@@ -77,5 +82,11 @@ public class DefaultController {
     public String accessDenied(ModelMap map){
         map.addAttribute("login_error", "Wrong username or password");
         return "<h1><i>You don't have permission to this page</i></h1>";
+    }
+
+    
+    @ModelAttribute("isLogged")
+    public boolean isLogged(){
+        return isLogged;
     }
 }

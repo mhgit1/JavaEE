@@ -5,6 +5,7 @@ com\base\models\Course.class
 com\base\util\HibernateUtil.class
 com\base\models\UserRoles.class
 com\base\DAO\TeacherDAO.class
+com\base\controller\UserController.class
 com\base\controller\CourseController.class
 com\base\DAO\UserDAO.class
 com\base\models\Teachers.class

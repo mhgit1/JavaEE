@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class StudentController {
     @RequestMapping(value="/admin/student", method=RequestMethod.GET)
     public String renderStudent(ModelMap map){
-        map.addAttribute("isLogged", true);
+        map.addAttribute("studentPage", true); 
+        map.addAttribute("isLogged", true); 
+
         map.addAttribute("student", new Students());
         try{
             map.addAttribute("students", StudentDAO.getStudents());
@@ -34,7 +36,6 @@ public class StudentController {
     @RequestMapping(value="/admin/student", method=RequestMethod.POST)
     public String addNewStudent(@ModelAttribute("student") Students student, ModelMap map){    //mappaa teacher modelattributen teach objektille
         System.out.println(student.getSName());
-        map.addAttribute("isLogged", true);
         try{
             StudentDAO.addStudent(student);
             map.addAttribute("save_info", "Student added succesfully!");

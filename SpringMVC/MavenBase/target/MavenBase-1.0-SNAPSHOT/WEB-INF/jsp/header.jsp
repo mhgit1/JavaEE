@@ -16,8 +16,12 @@
             <ul id='anc_list' class="nav navbar-nav navbar-right">
                 <c:if test="${isLogged == true}">
                     <li><a href="/logout">Logout</a></li>
-                    <li><a href="/admin/student">Add Student</a></li>
-                    <li><a href="/admin/teacher/course">Courses</a></li>
+                    <li><a href="/admin/second">Teachers</a></li>
+                    <c:if test="${studentPage == false}">
+                        <li><a href="/admin/student">Add Student</a></li>
+                    </c:if>
+                    <li><a href="/admin/course">Courses</a></li>
+                    <li><a href="/admin/user">Users</a></li>
                 </c:if>
             </ul>
         </div>

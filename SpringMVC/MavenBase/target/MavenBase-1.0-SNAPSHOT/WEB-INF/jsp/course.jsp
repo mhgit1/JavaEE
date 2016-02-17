@@ -20,7 +20,7 @@
             <h2>Add course information</h2>
             <div class="row">
                 <div class="col-md-4">
-                    <form:form action="/admin/teacher/course" method="POST" modelAttribute="course">
+                    <form:form action="/admin/course" method="POST" modelAttribute="course">
                         <form:label path="">Name</form:label><br/>             
                         <form:input cssClass="form-control" path="CName"></form:input><br/> 
                         <form:label path="">Grade</form:label><br/>            
